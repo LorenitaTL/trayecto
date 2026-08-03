@@ -64,8 +64,18 @@ const BARS = [
 
 const CONCEPTS = [
   { code: "C-1", name: "Plataforma digital autónoma", score: "8.00", selected: false },
-  { code: "C-2", name: "Programa híbrido de formación y mentoría", score: "8.25", selected: true },
-  { code: "C-3", name: "Centro comunitario de vinculación", score: "8.29", selected: false },
+  {
+    code: "C-2",
+    name: "Programa híbrido de formación y mentoría",
+    score: "8.25",
+    selected: true,
+  },
+  {
+    code: "C-3",
+    name: "Centro comunitario de vinculación",
+    score: "8.29",
+    selected: false,
+  },
 ];
 
 const SCHEDULE_OPTS = [
@@ -78,25 +88,25 @@ const SCHEDULE_OPTS = [
 const OCCUPATION_OPTS = [
   "Estudiante",
   "Trabajo formal",
-  "Trabajo informal / changas",
+  "Trabajo informal",
   "Buscando empleo",
   "Otro",
 ];
 
 function Nav() {
   return (
-    <header className="nav">
-      <div className="wrap">
-        <a href="#top" className="brand">
+    <header className='nav'>
+      <div className='wrap'>
+        <a href='#top' className='brand'>
           TRAYECTO <span>PROGRAMA PILOTO</span>
         </a>
-        <nav className="nav-links">
-          <a href="#trayecto">El trayecto</a>
-          <a href="#incluye">Qué incluye</a>
-          <a href="#validacion">Validación</a>
-          <a href="#preguntas">Preguntas</a>
+        <nav className='nav-links'>
+          <a href='#trayecto'>El trayecto</a>
+          <a href='#incluye'>Qué incluye</a>
+          <a href='#validacion'>Validación</a>
+          <a href='#preguntas'>Preguntas</a>
         </nav>
-        <a href="#boleto" className="btn btn-primary">
+        <a href='#boleto' className='btn btn-primary'>
           Reservar mi lugar
         </a>
       </div>
@@ -106,43 +116,42 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="hero" id="top">
-      <div className="wrap">
+    <section className='hero' id='top'>
+      <div className='wrap'>
         <div>
-          <p className="eyebrow">Programa piloto · validación en curso</p>
+          <p className='eyebrow'>Programa piloto · validación en curso</p>
           <h1>
             De tomar un curso a <em>demostrar</em> que sabes hacerlo.
           </h1>
-          <p className="hero-sub">
+          <p className='hero-sub'>
             Trayecto es un programa híbrido para jóvenes de 18 a 25 años: formación
-            práctica, proyectos con organizaciones reales, mentoría y una ruta
-            clara hacia tu primer empleo formal — no un curso más que se queda
-            en el diploma.
+            práctica, proyectos con organizaciones reales, mentoría y una ruta clara hacia
+            tu primer empleo formal — no un curso más que se queda en el diploma.
           </p>
-          <div className="hero-actions">
-            <a href="#boleto" className="btn btn-primary">
+          <div className='hero-actions'>
+            <a href='#boleto' className='btn btn-primary'>
               Reservar mi lugar
             </a>
-            <a href="#trayecto" className="btn btn-ghost">
+            <a href='#trayecto' className='btn btn-ghost'>
               Ver cómo funciona
             </a>
           </div>
-          <p className="hero-note">
+          <p className='hero-note'>
             Estamos formando la primera generación y ajustando el programa con
             retroalimentación real antes de construirlo por completo.
           </p>
         </div>
-        <div className="hero-visual">
-          <div className="hero-line">
-            <div className="hero-stop">
+        <div className='hero-visual'>
+          <div className='hero-line'>
+            <div className='hero-stop'>
               T-01 → T-07
               <strong>Formación, práctica, mentoría y evidencia</strong>
             </div>
-            <div className="hero-stop">
+            <div className='hero-stop'>
               T-08
               <strong>Vinculación con organizaciones aliadas</strong>
             </div>
-            <div className="hero-stop is-end">
+            <div className='hero-stop is-end'>
               T-09
               <strong>Tu primera oportunidad laboral</strong>
             </div>
@@ -155,39 +164,44 @@ function Hero() {
 
 function Problema() {
   return (
-    <section className="section" id="problema">
-      <div className="wrap">
-        <div className="section-head">
-          <p className="eyebrow">Estación 00 · Por qué existe Trayecto</p>
+    <section className='section' id='problema'>
+      <div className='wrap'>
+        <div className='section-head'>
+          <p className='eyebrow'>Estación 00 · Por qué existe Trayecto</p>
           <h2>La capacitación no es lo que más te falta.</h2>
           <p>
-            En el cuestionario que aplicamos a jóvenes de tu edad, la falta de
-            experiencia fue el obstáculo mencionado con más frecuencia para
-            conseguir trabajo — más que la falta de cursos o conocimientos.
+            En el cuestionario que aplicamos a jóvenes de tu edad, la falta de experiencia
+            fue el obstáculo mencionado con más frecuencia para conseguir trabajo — más
+            que la falta de cursos o conocimientos.
           </p>
         </div>
-        <div className="stat-grid">
-          <div className="stat">
+        <div className='stat-grid'>
+          <div className='stat'>
             <b>8.0/10</b>
-            <span>Importancia que los jóvenes le dan a "conseguir empleo" — la necesidad mejor calificada.</span>
+            <span>
+              Importancia que los jóvenes le dan a "conseguir empleo" — la necesidad mejor
+              calificada.
+            </span>
           </div>
-          <div className="stat">
+          <div className='stat'>
             <b>7.6/10</b>
             <span>Importancia de tener acceso a mentorías durante el proceso.</span>
           </div>
-          <div className="stat">
+          <div className='stat'>
             <b>7.5/10</b>
             <span>Importancia de prepararse para entrevistas de trabajo.</span>
           </div>
-          <div className="stat">
+          <div className='stat'>
             <b>9</b>
-            <span>Necesidades distintas identificadas — casi todas con una importancia igual de alta.</span>
+            <span>
+              Necesidades distintas identificadas — casi todas con una importancia igual
+              de alta.
+            </span>
           </div>
         </div>
-        <p className="problema-note">
-          Las diferencias entre necesidades fueron pequeñas: la empleabilidad no
-          depende de una sola cosa. Por eso Trayecto no es solo un curso —
-          es una ruta completa.
+        <p className='problema-note'>
+          Las diferencias entre necesidades fueron pequeñas: la empleabilidad no depende
+          de una sola cosa. Por eso Trayecto no es solo un curso — es una ruta completa.
         </p>
       </div>
     </section>
@@ -196,20 +210,20 @@ function Problema() {
 
 function TrayectoRoute() {
   return (
-    <section className="section route-section" id="trayecto">
-      <div className="wrap">
-        <div className="section-head">
-          <p className="eyebrow">Estaciones 01–09</p>
+    <section className='section route-section' id='trayecto'>
+      <div className='wrap'>
+        <div className='section-head'>
+          <p className='eyebrow'>Estaciones 01–09</p>
           <h2>El trayecto completo, no solo el curso.</h2>
           <p>
-            Nueve etapas conectadas. Cada una existe porque, sola, la anterior
-            no era suficiente para conseguir empleo.
+            Nueve etapas conectadas. Cada una existe porque, sola, la anterior no era
+            suficiente para conseguir empleo.
           </p>
         </div>
-        <div className="stations">
+        <div className='stations'>
           {STATIONS.map((s) => (
             <div className={`station${s.isLast ? " is-last" : ""}`} key={s.code}>
-              <span className="code">{s.code}</span>
+              <span className='code'>{s.code}</span>
               <h3>{s.title}</h3>
               <p>{s.text}</p>
             </div>
@@ -222,28 +236,30 @@ function TrayectoRoute() {
 
 function Incluye() {
   return (
-    <section className="section" id="incluye">
-      <div className="wrap">
-        <div className="section-head">
-          <p className="eyebrow">Qué incluye</p>
+    <section className='section' id='incluye'>
+      <div className='wrap'>
+        <div className='section-head'>
+          <p className='eyebrow'>Qué incluye</p>
           <h2>Priorizado con datos, no con intuición.</h2>
           <p>
-            Cruzamos las necesidades de los jóvenes encuestados con los
-            requerimientos técnicos de la solución. Así fue como quedó ordenado
-            por prioridad.
+            Cruzamos las necesidades de los jóvenes encuestados con los requerimientos
+            técnicos de la solución. Así fue como quedó ordenado por prioridad.
           </p>
         </div>
-        <div className="bars">
+        <div className='bars'>
           {BARS.map((b) => (
-            <div className="bar-row" key={b.code}>
-              <div className="bar-label">
+            <div className='bar-row' key={b.code}>
+              <div className='bar-label'>
                 {b.label}
                 <small>{b.code}</small>
               </div>
-              <div className="bar-track">
-                <div className="bar-fill" style={{ width: `${(b.value / 16.7) * 100}%` }} />
+              <div className='bar-track'>
+                <div
+                  className='bar-fill'
+                  style={{ width: `${(b.value / 16.7) * 100}%` }}
+                />
               </div>
-              <div className="bar-value">{b.value.toFixed(1)}%</div>
+              <div className='bar-value'>{b.value.toFixed(1)}%</div>
             </div>
           ))}
         </div>
@@ -254,32 +270,32 @@ function Incluye() {
 
 function Diferenciadores() {
   return (
-    <section className="section" id="diferenciadores">
-      <div className="wrap">
-        <div className="section-head">
-          <p className="eyebrow">Diferenciadores</p>
+    <section className='section' id='diferenciadores'>
+      <div className='wrap'>
+        <div className='section-head'>
+          <p className='eyebrow'>Diferenciadores</p>
           <h2>No elegimos entre digital o presencial.</h2>
         </div>
-        <div className="diff-grid">
-          <div className="diff-card is-not">
+        <div className='diff-grid'>
+          <div className='diff-card is-not'>
             <h4>Solo una plataforma de cursos</h4>
             <p>
-              Sin práctica real ni acompañamiento, un certificado no alcanza
-              para convencer a un empleador.
+              Sin práctica real ni acompañamiento, un certificado no alcanza para
+              convencer a un empleador.
             </p>
           </div>
-          <div className="diff-card is-not">
+          <div className='diff-card is-not'>
             <h4>Solo un centro presencial</h4>
             <p>
-              Requiere trasladarte y ajustar tu horario — una barrera real para
-              quien ya trabaja o estudia.
+              Requiere trasladarte y ajustar tu horario — una barrera real para quien ya
+              trabaja o estudia.
             </p>
           </div>
-          <div className="diff-card is-result">
+          <div className='diff-card is-result'>
             <h4>Un trayecto híbrido</h4>
             <p>
-              Formación flexible desde tu celular, combinada con proyectos,
-              mentoría y vinculación reales.
+              Formación flexible desde tu celular, combinada con proyectos, mentoría y
+              vinculación reales.
             </p>
           </div>
         </div>
@@ -290,35 +306,38 @@ function Diferenciadores() {
 
 function Validacion() {
   return (
-    <section className="section" id="validacion">
-      <div className="wrap">
-        <div className="section-head">
-          <p className="eyebrow">Así llegamos aquí</p>
+    <section className='section' id='validacion'>
+      <div className='wrap'>
+        <div className='section-head'>
+          <p className='eyebrow'>Así llegamos aquí</p>
           <h2>Validado con los jóvenes antes de construirlo.</h2>
           <p>
-            Presentamos tres versiones de este programa a un grupo de jóvenes
-            del público objetivo y les pedimos calificar cada una frente a sus
-            propias necesidades.
+            Presentamos tres versiones de este programa a un grupo de jóvenes del público
+            objetivo y les pedimos calificar cada una frente a sus propias necesidades.
           </p>
         </div>
-        <div className="concepts">
+        <div className='concepts'>
           {CONCEPTS.map((c) => (
-            <div className={`concept-card${c.selected ? " is-selected" : ""}`} key={c.code}>
-              <span className="code">{c.code}</span>
+            <div
+              className={`concept-card${c.selected ? " is-selected" : ""}`}
+              key={c.code}
+            >
+              <span className='code'>{c.code}</span>
               <h4>{c.name}</h4>
-              <div className="concept-score">
+              <div className='concept-score'>
                 {c.score} <small>/ 10</small>
               </div>
-              {c.selected && <span className="tag-selected">Elegido como base de Trayecto</span>}
+              {c.selected && (
+                <span className='tag-selected'>Elegido como base de Trayecto</span>
+              )}
             </div>
           ))}
         </div>
-        <p className="problema-note">
-          El centro comunitario obtuvo el puntaje más alto por 0.04 puntos,
-          pero al elegir directamente, 3 de 7 participantes prefirieron el
-          programa híbrido y otros 3 pidieron combinar características de
-          ambos. Por eso Trayecto toma el híbrido como base y suma el
-          diagnóstico inicial, la mentoría individual y las prácticas
+        <p className='problema-note'>
+          El centro comunitario obtuvo el puntaje más alto por 0.04 puntos, pero al elegir
+          directamente, 3 de 7 participantes prefirieron el programa híbrido y otros 3
+          pidieron combinar características de ambos. Por eso Trayecto toma el híbrido
+          como base y suma el diagnóstico inicial, la mentoría individual y las prácticas
           supervisadas del concepto comunitario.
         </p>
       </div>
@@ -350,17 +369,17 @@ function FAQ() {
     },
   ];
   return (
-    <section className="section" id="preguntas">
-      <div className="wrap">
-        <div className="section-head">
-          <p className="eyebrow">Antes de reservar tu lugar</p>
+    <section className='section' id='preguntas'>
+      <div className='wrap'>
+        <div className='section-head'>
+          <p className='eyebrow'>Antes de reservar tu lugar</p>
           <h2>Preguntas frecuentes</h2>
         </div>
-        <div className="faq">
+        <div className='faq'>
           {items.map((it) => (
             <details key={it.q}>
               <summary>{it.q}</summary>
-              <p className="faq-a">{it.a}</p>
+              <p className='faq-a'>{it.a}</p>
             </details>
           ))}
         </div>
@@ -407,65 +426,73 @@ function Boleto() {
     } catch (err) {
       setStatus("err");
       setErrorMsg(
-        "No pudimos enviar tu reserva. Revisa tu conexión e inténtalo de nuevo."
+        "No pudimos enviar tu reserva. Revisa tu conexión e inténtalo de nuevo.",
       );
     }
   }
 
   return (
-    <section className="section boleto-section" id="boleto">
-      <div className="wrap">
-        <div className="section-head" style={{ margin: "0 auto 40px", textAlign: "center", maxWidth: 560 }}>
-          <p className="eyebrow" style={{ justifyContent: "center" }}>
+    <section className='section boleto-section' id='boleto'>
+      <div className='wrap'>
+        <div
+          className='section-head'
+          style={{ margin: "0 auto 40px", textAlign: "center", maxWidth: 560 }}
+        >
+          <p className='eyebrow' style={{ justifyContent: "center" }}>
             Destino final
           </p>
           <h2>Aparta tu lugar en la primera generación</h2>
           <p>
-            Estamos decidiendo qué construir primero. Tu respuesta cuenta
-            directamente para esa decisión.
+            Estamos decidiendo qué construir primero. Tu respuesta cuenta directamente
+            para esa decisión.
           </p>
         </div>
 
-        <div className="boleto">
+        <div className='boleto'>
           {status === "ok" ? (
-            <div className="success">
-              <div className="stamp">✓</div>
+            <div className='success'>
+              <div className='stamp'>✓</div>
               <h3>Tu lugar quedó reservado</h3>
               <p>
-                Gracias por tomarte el tiempo. Te contactaremos por el medio
-                que dejaste en cuanto tengamos noticias de la primera
-                generación.
+                Gracias por tomarte el tiempo. Te contactaremos por el medio que dejaste
+                en cuanto tengamos noticias de la primera generación.
               </p>
             </div>
           ) : (
             <>
-              <div className="boleto-top">
-                <p className="eyebrow">Boleto · primera generación</p>
+              <div className='boleto-top'>
+                <p className='eyebrow'>Boleto · primera generación</p>
                 <h3>Cuéntanos de ti</h3>
                 <p>Toma menos de dos minutos.</p>
               </div>
-              <div className="perforation" />
-              <form className="boleto-form" onSubmit={handleSubmit}>
-                <div className="field-row">
-                  <div className="field">
-                    <label htmlFor="name">Nombre completo</label>
-                    <input id="name" name="name" type="text" required />
+              <div className='perforation' />
+              <form className='boleto-form' onSubmit={handleSubmit}>
+                <div className='field-row'>
+                  <div className='field'>
+                    <label htmlFor='name'>Nombre completo</label>
+                    <input id='name' name='name' type='text' required />
                   </div>
-                  <div className="field">
-                    <label htmlFor="age">Edad</label>
-                    <input id="age" name="age" type="number" min="18" max="25" required />
+                  <div className='field'>
+                    <label htmlFor='age'>Edad</label>
+                    <input id='age' name='age' type='number' min='18' max='25' required />
                   </div>
                 </div>
 
-                <div className="field">
-                  <label htmlFor="contact">Correo o WhatsApp</label>
-                  <input id="contact" name="contact" type="text" required placeholder="tu@correo.com o número" />
+                <div className='field'>
+                  <label htmlFor='contact'>Correo o WhatsApp</label>
+                  <input
+                    id='contact'
+                    name='contact'
+                    type='text'
+                    required
+                    placeholder='tu@correo.com o número'
+                  />
                 </div>
 
-                <div className="field">
-                  <label htmlFor="occupation">Situación actual</label>
-                  <select id="occupation" name="occupation" required defaultValue="">
-                    <option value="" disabled>
+                <div className='field'>
+                  <label htmlFor='occupation'>Situación actual</label>
+                  <select id='occupation' name='occupation' required defaultValue=''>
+                    <option value='' disabled>
                       Selecciona una opción
                     </option>
                     {OCCUPATION_OPTS.map((o) => (
@@ -476,55 +503,61 @@ function Boleto() {
                   </select>
                 </div>
 
-                <div className="field">
+                <div className='field'>
                   <label>
-                    Disponibilidad de horario <span className="hint">(elige todas las que apliquen)</span>
+                    Disponibilidad de horario{" "}
+                    <span className='hint'>(elige todas las que apliquen)</span>
                   </label>
-                  <div className="check-grid">
+                  <div className='check-grid'>
                     {SCHEDULE_OPTS.map((opt) => (
-                      <label className="check-pill" key={opt}>
-                        <input type="checkbox" name={`schedule_${opt}`} />
+                      <label className='check-pill' key={opt}>
+                        <input type='checkbox' name={`schedule_${opt}`} />
                         {opt}
                       </label>
                     ))}
                   </div>
                 </div>
 
-                <div className="field">
+                <div className='field'>
                   <label>
-                    Del 1 al 10, ¿qué tan probable es que te inscribas a la
-                    primera generación?
+                    Del 1 al 10, ¿qué tan probable es que te inscribas a la primera
+                    generación?
                   </label>
-                  <div className="scale-grid">
+                  <div className='scale-grid'>
                     {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
-                      <label className="scale-opt" key={n}>
-                        <input type="radio" name="intent" value={n} required />
+                      <label className='scale-opt' key={n}>
+                        <input type='radio' name='intent' value={n} required />
                         {n}
                       </label>
                     ))}
                   </div>
-                  <div className="scale-caption">
+                  <div className='scale-caption'>
                     <span>Nada probable</span>
                     <span>Muy probable</span>
                   </div>
                 </div>
 
-                <div className="field">
-                  <label htmlFor="comment">
-                    ¿Qué te haría decir que sí sin dudarlo? <span className="hint">(opcional)</span>
+                <div className='field'>
+                  <label htmlFor='comment'>
+                    ¿Qué te haría decir que sí sin dudarlo?{" "}
+                    <span className='hint'>(opcional)</span>
                   </label>
-                  <textarea id="comment" name="comment" />
+                  <textarea id='comment' name='comment' />
                 </div>
 
-                <label className="consent">
-                  <input type="checkbox" required />
-                  Acepto que me contacten sobre la primera generación de
-                  Trayecto usando los datos de este formulario.
+                <label className='consent'>
+                  <input type='checkbox' required />
+                  Acepto que me contacten sobre la primera generación de Trayecto usando
+                  los datos de este formulario.
                 </label>
 
-                {status === "err" && <div className="form-msg err">{errorMsg}</div>}
+                {status === "err" && <div className='form-msg err'>{errorMsg}</div>}
 
-                <button className="btn btn-primary btn-block" type="submit" disabled={status === "loading"}>
+                <button
+                  className='btn btn-primary btn-block'
+                  type='submit'
+                  disabled={status === "loading"}
+                >
                   {status === "loading" ? "Enviando…" : "Reservar mi lugar"}
                 </button>
               </form>
@@ -539,7 +572,7 @@ function Boleto() {
 function Footer() {
   return (
     <footer>
-      <div className="wrap">
+      <div className='wrap'>
         <span>Trayecto — prototipo de validación, no un servicio operativo todavía.</span>
         <span>Equipo 5 · Tecnológico de Estudios Superiores de Monterrey</span>
       </div>
