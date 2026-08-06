@@ -1,55 +1,117 @@
-// Receives a signup ("boleto") submission from the landing page.
+// Recibe el formulario completo de validación de Trayecto.
 //
-// For this first version we don't wire up a database — the goal of the
-// exercise is to *validate demand*, not to build the platform. Instead:
-//
-//   1. If LEADS_WEBHOOK_URL is set (Vercel → Settings → Environment
-//      Variables), every submission is forwarded there as JSON. This can
-//      point at a Google Apps Script Web App tied to a Sheet, a Formspree
-//      endpoint, a Zapier/Make webhook, etc. — anything that accepts a
-//      POST with a JSON body.
-//   2. Every submission is also written to the function logs
-//      (console.log), which you can read from the Vercel dashboard
-//      (Project → Logs) as a fallback source of evidence for the report.
-//
-// See README.md for step-by-step instructions to connect a Google Sheet.
+// Si LEADS_WEBHOOK_URL está configurada en Vercel, la respuesta
+// se reenvía como JSON. También queda registrada en los logs.
 
 export async function POST(request) {
   let payload;
+
   try {
     payload = await request.json();
   } catch {
-    return Response.json({ ok: false, error: "invalid_json" }, { status: 400 });
-  }
-
-  if (!payload?.name || !payload?.contact || !payload?.intent) {
-    return Response.json({ ok: false, error: "missing_fields" }, { status: 400 });
-  }
-
-  // Always log — visible in Vercel function logs.
-  console.log("[trayecto:lead]", JSON.stringify(payload));
-
-  const webhookUrl = process.env.LEADS_WEBHOOK_URL;
-  if (webhookUrl) {
-    try {
-      const res = await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) {
-        console.error("[trayecto:lead] webhook responded with", res.status);
-        // We still tell the user their reservation went through, since it
-        // was logged above — but we surface the failure server-side.
+    return Response.json(
+      {
+        ok: false,
+        error: "invalid_json",
+      },
+      {
+        status: 400,
       }
-    } catch (err) {
-      console.error("[trayecto:lead] webhook forwarding failed", err);
-    }
-  } else {
-    console.warn(
-      "[trayecto:lead] LEADS_WEBHOOK_URL is not set — this submission only exists in the function logs."
     );
   }
 
-  return Response.json({ ok: true });
+  const requiredFields = [
+    "name",
+    "age",
+    "programUnderstanding",
+    "paymentCapacity",
+    "priceBarrier",
+    "baseContribution",
+    "preferredAccess",
+    "paymentCommitment",
+    "optionalSpecialization",
+    "individualMentoring",
+    "successFee",
+    "successFeeBarrier",
+    "unclearSection",
+  ];
+
+  const missingFields = requiredFields.filter(
+    (field) => !payload?.[field]
+  );
+
+  if (
+    !Array.isArray(payload?.valueForPayment) ||
+    payload.valueForPayment.length < 3
+  ) {
+    missingFields.push("valueForPayment");
+  }
+
+  if (
+    !Array.isArray(payload?.trustElements) ||
+    payload.trustElements.length < 5
+  ) {
+    missingFields.push("trustElements");
+  }
+
+  if (!payload?.privacyConsent) {
+    missingFields.push("privacyConsent");
+  }
+
+  if (missingFields.length > 0) {
+    return Response.json(
+      {
+        ok: false,
+        error: "missing_fields",
+        fields: [...new Set(missingFields)],
+      },
+      {
+        status: 400,
+      }
+    );
+  }
+
+  console.log(
+    "[trayecto:validation]",
+    JSON.stringify(payload)
+  );
+
+  const webhookUrl = process.env.LEADS_WEBHOOK_URL;
+
+  if (webhookUrl) {
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        console.error(
+          "[trayecto:validation] Webhook status:",
+          response.status
+        );
+      }
+    } catch (error) {
+      console.error(
+        "[trayecto:validation] Webhook error:",
+        error
+      );
+    }
+  } else {
+    console.warn(
+      "[trayecto:validation] LEADS_WEBHOOK_URL no está configurada."
+    );
+  }
+
+  return Response.json(
+    {
+      ok: true,
+    },
+    {
+      status: 201,
+    }
+  );
 }

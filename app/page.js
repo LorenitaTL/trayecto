@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ValidationForm from "./components/ValidationForm";
 
 const STATIONS = [
   {
@@ -106,7 +107,8 @@ function Nav() {
           <a href='#validacion'>Validación</a>
           <a href='#preguntas'>Preguntas</a>
         </nav>
-        <a href='#boleto' className='btn btn-primary'>
+        {/* <a href='#boleto' className='btn btn-primary'> */}
+        <a href='#preguntas' className='btn btn-primary'>          
           Reservar mi lugar
         </a>
       </div>
@@ -129,7 +131,8 @@ function Hero() {
             tu primer empleo formal — no un curso más que se queda en el diploma.
           </p>
           <div className='hero-actions'>
-            <a href='#boleto' className='btn btn-primary'>
+            {/* <a href='#boleto' className='btn btn-primary'> */}
+            <a href='#preguntas' className='btn btn-primary'>              
               Reservar mi lugar
             </a>
             <a href='#trayecto' className='btn btn-ghost'>
@@ -349,40 +352,55 @@ function FAQ() {
   const items = [
     {
       q: "¿Necesito computadora o buen internet?",
-      a: "Trayecto está pensado para funcionar también desde celular. Estamos confirmando, con esta misma prueba, qué actividades necesitan conexión constante y cuáles no.",
+      a: "Trayecto está pensado para funcionar también desde celular. Estamos confirmando qué actividades necesitan conexión constante y cuáles no.",
     },
     {
       q: "¿Cuánto cuesta participar?",
-      a: "Todavía estamos definiendo el modelo de costos de la primera generación. Si dejas tus datos, serás de las primeras personas en enterarte en cuanto lo decidamos.",
+      a: "Todavía estamos validando las cuotas, becas y modalidades de acceso de la primera generación.",
     },
     {
       q: "¿Tengo que ir a algún lugar físico?",
-      a: "No necesariamente. La mayor parte de la formación es digital y flexible. Las sesiones de mentoría y algunas prácticas pueden ser presenciales o virtuales, según el grupo.",
+      a: "No necesariamente. La formación será principalmente digital y algunas sesiones podrán ser virtuales o presenciales.",
     },
     {
       q: "No tengo experiencia laboral. ¿Aun así puedo entrar?",
-      a: "Es justo para quien está pensado. El trayecto empieza con formación y proyectos prácticos antes de buscar cualquier tipo de vinculación laboral.",
+      a: "Sí. El programa está dirigido especialmente a jóvenes que buscan adquirir y demostrar su primera experiencia.",
     },
     {
       q: "¿Me garantizan un empleo al terminar?",
-      a: "No — nadie puede garantizar eso honestamente. Lo que sí te ofrecemos es una ruta clara para desarrollar habilidades, generar evidencia real de lo que sabes hacer y acercarte a más y mejores oportunidades.",
+      a: "No se garantiza una contratación. Trayecto busca mejorar las habilidades, evidencias y preparación de los participantes para acercarlos a oportunidades laborales.",
     },
   ];
+
   return (
-    <section className='section' id='preguntas'>
-      <div className='wrap'>
-        <div className='section-head'>
-          <p className='eyebrow'>Antes de reservar tu lugar</p>
+    <section className="section" id="preguntas">
+      <div className="wrap">
+        <div className="section-head">
+          <p className="eyebrow">Antes de reservar tu lugar</p>
           <h2>Preguntas frecuentes</h2>
         </div>
-        <div className='faq'>
-          {items.map((it) => (
-            <details key={it.q}>
-              <summary>{it.q}</summary>
-              <p className='faq-a'>{it.a}</p>
+
+        <div className="faq">
+          {items.map((item) => (
+            <details key={item.q}>
+              <summary>{item.q}</summary>
+              <p className="faq-a">{item.a}</p>
             </details>
           ))}
         </div>
+
+        <div className="section-head validation-heading">
+          <p className="eyebrow">Validación del programa</p>
+
+          <h2>Ayúdanos a mejorar Trayecto</h2>
+
+          <p>
+            Responde las siguientes preguntas después de revisar la propuesta.
+            No se realizará ningún cobro ni se solicitarán datos bancarios.
+          </p>
+        </div>
+
+        <ValidationForm />
       </div>
     </section>
   );
@@ -591,7 +609,7 @@ export default function Page() {
       <Diferenciadores />
       <Validacion />
       <FAQ />
-      <Boleto />
+      {/* <Boleto /> */}
       <Footer />
     </>
   );
