@@ -497,13 +497,13 @@ function Boleto() {
                 </div>
 
                 <div className='field'>
-                  <label htmlFor='contact'>Correo o WhatsApp</label>
+                  <label htmlFor='contact'>Correo electronico</label>
                   <input
                     id='contact'
                     name='contact'
                     type='text'
                     required
-                    placeholder='tu@correo.com o número'
+                    placeholder='tu@correo.com'
                   />
                 </div>
 
