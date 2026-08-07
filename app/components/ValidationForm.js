@@ -403,7 +403,7 @@ if (status === "success") {
 
         <RadioGroup
           name="paymentCommitment"
-          question="Si hoy pudieras reservar tu lugar sin realizar todavía el pago para el Nivel 1, ¿qué harías?"
+          question="Si hoy pudieras reservar tu lugar sin realizar , ¿Què elección tomarías?"
           options={[
             "Reservaría con la cuota seleccionada",
             "Solicitaría una beca",
@@ -416,13 +416,11 @@ if (status === "success") {
 
         <RadioGroup
           name="optionalSpecialization"
-          question="Después de completar los programas de los Niveles 1 y 2, ¿pagarías en el Nivel 3 por rutas especializadas opcionales?"
+          question="Si tuvieras oportunidad de tomar algún curso avanzado en especial ¿Estarías dispuesto a participar?"
           options={[
-            "Sí, hasta $99 MXN",
-            "Sí, hasta $149 MXN",
-            "Sí, hasta $199 MXN",
-            "Dependería del contenido",
-            "No pagaría",
+            "Sí",
+            "No",
+            "Tal vez",
           ]}
           value={form.optionalSpecialization}
           onChange={(value) =>
