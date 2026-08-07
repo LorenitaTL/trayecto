@@ -17,11 +17,17 @@ door / smoke test* para medir demanda antes de construir nada más.
 - **Diferenciadores**, tomados de la sección 4.11 del documento.
 - **Validación**, con los puntajes reales de la matriz de Pugh (8.00 / 8.25 /
   8.29) y por qué se eligió el concepto híbrido.
+- **Modelo de cobro**, los 4 niveles de precio (boleto de arranque,
+  estaciones desbloqueadas, rutas especializadas y fee de colocación) en
+  tarjetas expandibles.
 - **Preguntas frecuentes**, honestas sobre lo que todavía no está decidido
   (costo, garantía de empleo, etc.) — evita prometer de más.
-- **Formulario "boleto"**: nombre, edad, contacto, ocupación, disponibilidad
-  de horario y una escala 1–10 de intención de inscripción. Esta escala es tu
-  señal cuantitativa de intención de compra para el experimento.
+- **Formulario de validación** (`ValidationForm`): perfil y comprensión del
+  programa, intención de compra (qué aportación harían, qué modalidad de
+  acceso preferirían, si pagarían por rutas especializadas o mentoría
+  individual, si aceptarían el fee de éxito) y retroalimentación sobre la
+  página. Es tu señal cuantitativa y cualitativa de intención de compra para
+  el experimento.
 
 Todo el texto y los datos están en `app/page.js`, en los arreglos
 `STATIONS`, `BARS`, `CONCEPTS`, etc. — para editar copy no hace falta tocar
@@ -52,32 +58,21 @@ defecto, cada respuesta:
 ### Opción recomendada: Google Sheets como base de datos
 
 1. Crea un Google Sheet nuevo.
-2. Extensiones → Apps Script, pega esto y guarda:
-
-   ```js
-   function doPost(e) {
-     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-     var data = JSON.parse(e.postData.contents);
-     sheet.appendRow([
-       new Date(),
-       data.name,
-       data.age,
-       data.contact,
-       data.occupation,
-       (data.schedule || []).join(", "),
-       data.intent,
-       data.comment,
-     ]);
-     return ContentService.createTextOutput(JSON.stringify({ ok: true }))
-       .setMimeType(ContentService.MimeType.JSON);
-   }
-   ```
-
+2. Extensiones → Apps Script, pega el contenido de
+   [`scripts/AppScript.gs`](scripts/AppScript.gs) y guarda. Ese script está
+   alineado con los campos que envía `ValidationForm`
+   (`app/components/ValidationForm.js`) — si cambias las preguntas del
+   formulario, actualiza también las columnas del script.
 3. Implementar → Nueva implementación → Tipo "Aplicación web" → Ejecutar
    como "Yo" → Quién tiene acceso "Cualquier usuario". Copia la URL que te
    da.
 4. En Vercel: Project → Settings → Environment Variables → agrega
    `LEADS_WEBHOOK_URL` con esa URL → vuelve a desplegar.
+
+Si ya tienes la implementación creada y solo actualizas el código del
+script, debes republicarla: **Implementar → Administrar implementaciones →
+editar (lápiz) → Versión: Nueva versión → Implementar.** Guardar el script
+sin este paso no actualiza la Web App ya desplegada.
 
 ### Alternativa: Formspree, Zapier, Make, etc.
 
