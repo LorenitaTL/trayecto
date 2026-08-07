@@ -79,6 +79,76 @@ const CONCEPTS = [
   },
 ];
 
+const PRICING_LEVELS = [
+  {
+    code: "Nivel 1",
+    icon: "🎮",
+    title: "Boleto de Arranque",
+    price: "Pago único de inscripción",
+    priceNote: "Monto por definir",
+    context:
+      "Pagas una sola vez para reservar tu lugar. Este pago, aunque pequeño, es el mecanismo central de compromiso: quien invierte —aunque sea poco— tiene mayor probabilidad de completar el proceso.",
+    includes: [
+      "Diagnóstico inicial personalizado (T-01)",
+      "Acceso a los primeros módulos de formación (T-02)",
+      "Participación en la comunidad de participantes",
+      "Panel personal de seguimiento de progreso",
+      "Primera sesión de orientación grupal con un mentor",
+      "Material de introducción al mercado laboral mexicano",
+    ],
+  },
+  {
+    code: "Nivel 2",
+    icon: "⭐",
+    title: "Estaciones Desbloqueadas",
+    price: "Sin costo adicional",
+    priceNote: "Se ganan con el progreso",
+    context:
+      "Conforme completas etapas del programa, desbloqueas automáticamente acceso a los siguientes servicios sin pagar nada más. Tu avance es la \"moneda\" que abre puertas.",
+    includes: [
+      "T-03 Práctica — al completar los módulos iniciales",
+      "T-04 Mentoría grupal continua — al entregar el primer proyecto",
+      "T-05 Evaluación con retroalimentación — al participar en mentoría",
+      "T-06 Portafolio y certificaciones — al completar dos proyectos evaluados",
+      "T-07 Preparación profesional — al obtener la primera certificación",
+      "T-08 Vinculación con bolsa de trabajo — al tener el perfil completo",
+      "T-09 Seguimiento post-egreso — al completar el trayecto",
+    ],
+  },
+  {
+    code: "Nivel 3",
+    icon: "🗺",
+    title: "Rutas Especializadas",
+    price: "Pago por recurso adicional",
+    priceNote: "Opción, no requisito",
+    context:
+      "A partir de la Estación T-03 puedes adquirir módulos especializados según la industria o tecnología que más te interese — funcionan como los DLC de un videojuego: enriquecen la experiencia, pero el trayecto principal se completa sin ellos.",
+    includes: [
+      "Ruta Digital y E-commerce",
+      "Ruta Manufactura e Industria",
+      "Ruta Servicios al Cliente",
+      "Ruta Inteligencia Artificial y Datos",
+      "Ruta Administración y Finanzas",
+      "Sesiones adicionales de mentoría individual",
+    ],
+  },
+  {
+    code: "Nivel 4",
+    icon: "🏆",
+    title: "Fee de Colocación",
+    price: "Pago único de éxito",
+    priceNote: "30 días después de iniciar el empleo",
+    context:
+      "Cuando Trayecto te conecta directamente con una vacante y eres contratado, cobramos esta cuota al mes de haber iniciado el empleo —cuando ya recibiste tu primer sueldo—, no antes.",
+    includes: [
+      "Solo aplica si la conexión fue facilitada directamente por Trayecto",
+      "Se cobra cuando ya recibiste tu primer sueldo",
+      "Exención total si tu nuevo salario es igual o menor al mínimo vigente",
+      "Se paga una sola vez, aunque te vincules con más de un empleador",
+    ],
+  },
+];
+
 const SCHEDULE_OPTS = [
   "Entre semana, mañana",
   "Entre semana, tarde",
@@ -103,6 +173,7 @@ function Nav() {
         </a>
         <nav className='nav-links'>
           <a href='#trayecto'>El trayecto</a>
+          <a href='#precio'>Modelo de cobro</a>
           <a href='#incluye'>Qué incluye</a>
           <a href='#validacion'>Validación</a>
           <a href='#preguntas'>Preguntas</a>
@@ -237,6 +308,49 @@ function TrayectoRoute() {
   );
 }
 
+function ModeloCobro() {
+  return (
+    <section className='section' id='precio'>
+      <div className='wrap'>
+        <div className='section-head'>
+          <p className='eyebrow'>Modelo de cobro</p>
+          <h2>Pagas conforme avanzas, no todo por adelantado.</h2>
+          <p>
+            Cuatro niveles, como en un videojuego: un boleto de entrada, estaciones que se
+            desbloquean solas con tu progreso, rutas opcionales para especializarte y un
+            fee de éxito que solo se cobra cuando ya conseguiste empleo.
+          </p>
+        </div>
+        <div className='pricing-grid'>
+          {PRICING_LEVELS.map((lvl) => (
+            <details className='pricing-card' key={lvl.code}>
+              <summary>
+                <span className='pricing-icon'>{lvl.icon}</span>
+                <span className='pricing-summary-text'>
+                  <span className='pricing-code'>{lvl.code}</span>
+                  <span className='pricing-title'>{lvl.title}</span>
+                </span>
+                <span className='pricing-price'>
+                  <b>{lvl.price}</b>
+                  <span>{lvl.priceNote}</span>
+                </span>
+              </summary>
+              <div className='pricing-body'>
+                <p className='pricing-context'>{lvl.context}</p>
+                <ul className='pricing-includes'>
+                  {lvl.includes.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Incluye() {
   return (
     <section className='section' id='incluye'>
@@ -356,7 +470,7 @@ function FAQ() {
     },
     {
       q: "¿Cuánto cuesta participar?",
-      a: "Todavía estamos validando las cuotas, becas y modalidades de acceso de la primera generación.",
+      a: "No pagas todo por adelantado: hay una cuota única de inscripción (monto por definir), las estaciones T-03 a T-09 se desbloquean sin costo conforme avanzas, las rutas especializadas son opcionales, y solo se cobra un fee de éxito si Trayecto te vincula con un empleo y ya recibiste tu primer sueldo. Ve el detalle completo en \"Modelo de cobro\".",
     },
     {
       q: "¿Tengo que ir a algún lugar físico?",
@@ -605,6 +719,7 @@ export default function Page() {
       <Hero />
       <Problema />
       <TrayectoRoute />
+      <ModeloCobro />
       <Incluye />
       <Diferenciadores />
       <Validacion />
